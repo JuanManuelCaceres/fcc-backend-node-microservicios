@@ -27,7 +27,7 @@ app.get("/api/hello", function (req, res) {
 // API date
 app.get("/api/:date",(req,res)=>{
   //get date param
-  const dateParam = req.param.date;
+  const dateParam = req.params.date;
   // create date variable
   let date;
   // ask for date isNull
@@ -44,8 +44,8 @@ app.get("/api/:date",(req,res)=>{
   }
   // create json response
   res.json({
-    unix:date.getTime(),
-    utc:date.toUTCString()
+    unix: date.getTime(),
+    utc: date.toUTCString()
   });
 })
 
