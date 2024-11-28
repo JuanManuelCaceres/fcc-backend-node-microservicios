@@ -25,7 +25,7 @@ app.get("/api/hello", function (req, res) {
 });
 
 // API date
-app.get("/api/:date?",(err,data)=>{
+app.get("/api/:date",(req,res)=>{
   //get date param
   const dateParam = req.param.date;
   // create date variable
@@ -38,7 +38,10 @@ app.get("/api/:date?",(err,data)=>{
       ? new Date(dateParam)
       : new Date(parseInt(dateParam))
   }
-
+  //verifying valid date
+  if (isNaN(date.getTime())) {
+    return res.json({ error: "Invalid Date" });
+  }
   // create json response
   res.json({
     unix:date.getTime(),
